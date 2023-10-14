@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'billing-payments-angular-poc';
+  title = 'My Billing Payments POC';
 }
