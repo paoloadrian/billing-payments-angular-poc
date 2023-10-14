@@ -3,7 +3,7 @@
         <mat-grid-tile *ngFor="let client of clientList">
             <mat-card class="client-card">
                 <mat-card-content>
-                    {{client.name}} <button mat-icon-button color="primary"><mat-icon>receipt_long</mat-icon></button>
+                    {{client.name}} <button mat-icon-button color="primary" (click)="viewBills(client)"><mat-icon>receipt_long</mat-icon></button>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>

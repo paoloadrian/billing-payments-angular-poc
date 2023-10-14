@@ -11,11 +11,15 @@ import { MaterialModule } from './material.module';
 
 // components
 import { HomeComponent } from './home/home.component';
+import { BillsComponent } from './bills/bills.component';
+import { BillStatusPipe } from './pipes/bill-status.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    BillsComponent,
+    BillStatusPipe
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,10 @@
 import { Observable} from 'rxjs';
 import { Client } from '../../models/client';
 
+const CLIENT_A: Client = { id: 1, name: 'Joseph Carlton' };
+
 const CLIENT_LIST: Client[] = [
-    { id: 1, name: 'Joseph Carlton' },
+    CLIENT_A,
     { id: 2, name: 'Maria Juarez' },
     { id: 3, name: 'Albert Kenny' },
     { id: 4, name: 'Jessica Phillips' },
@@ -11,6 +13,7 @@ const CLIENT_LIST: Client[] = [
 
 export const ClientServiceMock = {
     clientList: CLIENT_LIST,
+    selectedClient: CLIENT_A,
     getClients: () => {
         return new Observable<Client[]>( (observer) => {
             observer.next(
@@ -21,5 +24,7 @@ export const ClientServiceMock = {
                 unsubscribe() { }
             };
         });
-    }
+    },
+    selectClient: () => { },
+    getSelectedClient: () => { return CLIENT_A }
 };
