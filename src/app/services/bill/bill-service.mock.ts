@@ -2,12 +2,12 @@ import { Observable} from 'rxjs';
 import { Bill } from '../../models/bill';
 
 const BILL_LIST: Bill[] = [
-    { month: '202001', type: 'WATER', status: true },
-    { month: '202001', type: 'ELECTRICITY', status: false },
-    { month: '202001', type: 'SEWER', status: true },
-    { month: '202002', type: 'WATER', status: true },
-    { month: '202002', type: 'ELECTRICITY', status: false },
-    { month: '202002', type: 'SEWER', status: false }
+    { id: 1, month: '202001', type: 'WATER', status: true },
+    { id: 2, month: '202001', type: 'ELECTRICITY', status: false },
+    { id: 3, month: '202001', type: 'SEWER', status: true },
+    { id: 4, month: '202002', type: 'WATER', status: true },
+    { id: 5, month: '202002', type: 'ELECTRICITY', status: false },
+    { id: 6, month: '202002', type: 'SEWER', status: false }
 ];
 
 export const BillServiceMock = {
@@ -21,6 +21,15 @@ export const BillServiceMock = {
             return {
                 unsubscribe() { }
             };
+        });
+    },
+    payBill: (billId: number) => {
+        return new Observable<any>((observer) => {
+            observer.next();
+            observer.complete();
+            return {
+                unsubscribe() {}
+            }
         });
     }
 };

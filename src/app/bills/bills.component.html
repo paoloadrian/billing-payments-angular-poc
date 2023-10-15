@@ -16,7 +16,7 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let bill">
-                <button mat-stroked-button color="primary" *ngIf="!bill.status">Pay</button>
+                <button mat-stroked-button color="primary" *ngIf="!bill.status" (click)="payBill(bill.id)">Pay</button>
             </td>
         </ng-container>
 

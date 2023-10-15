@@ -5,6 +5,8 @@ import { ClientService } from '../services/client/client.service';
 import { ClientServiceMock } from '../services/client/client-service.mock';
 import { BillService } from '../services/bill/bill.service';
 import { BillServiceMock } from '../services/bill/bill-service.mock';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarMock } from '../lib-mocks/mat-snack-bar.mock';
 
 describe('BillsComponent', () => {
   let component: BillsComponent;
@@ -15,7 +17,8 @@ describe('BillsComponent', () => {
       declarations: [ BillsComponent ],
       providers: [ 
         { provide: ClientService, useValue: ClientServiceMock },
-        { provide: BillService, useValue: BillServiceMock }
+        { provide: BillService, useValue: BillServiceMock },
+        { provide: MatSnackBar, useValue: MatSnackBarMock }
       ]
     })
     .compileComponents();

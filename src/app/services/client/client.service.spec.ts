@@ -32,7 +32,6 @@ describe('ClientService', () => {
         },
         error: done.fail
     });
-    // uncomment after API is implemented
-    // expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
+    expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
   })
 });

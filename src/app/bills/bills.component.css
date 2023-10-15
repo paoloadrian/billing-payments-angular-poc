@@ -10,3 +10,6 @@ table {
 .pending {
     color:crimson;
 }
+.center {
+    margin: auto;
+}

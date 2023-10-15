@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Client } from '../../models/client';
-import { ClientServiceMock } from './client-service.mock';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,9 +18,7 @@ export class ClientService {
   }
 
   getClients(): Observable<Client[]> {
-    // replace after API is implemented
-    // return this.httpClient.get<Client[]>(this.URL);
-    return ClientServiceMock.getClients();
+    return this.httpClient.get<Client[]>(this.URL);
   }
 
   selectClient(client: Client): void {

@@ -3,6 +3,8 @@ import { Client } from '../models/client';
 import { ClientService } from '../services/client/client.service';
 import { Bill } from '../models/bill';
 import { BillService } from '../services/bill/bill.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-bills',
@@ -16,10 +18,16 @@ export class BillsComponent implements OnInit {
   readonly errorMessage: string = 'Error reading client\'s bills';
   showError: boolean = false;
 
-  constructor(private clientService: ClientService, private billService: BillService) { }
+  constructor(private clientService: ClientService,
+    private billService: BillService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.client = this.clientService.getSelectedClient();
+    this.getBillList();
+  }
+
+  private getBillList(): void {
     this.billService.getBills(this.client.id).subscribe((response: Bill[]) => {
       this.billList = response.map((bill: Bill) => {
         const month = bill.month.substring(4, 6);
@@ -30,6 +38,16 @@ export class BillsComponent implements OnInit {
     }, (error) => {
       console.error(error);
       this.showError = true;
+    });
+  }
+
+  payBill(billId: number): void {
+    this.billService.payBill(billId).subscribe(() => {
+      this._snackBar.open('Bill successfully paid.', 'Success', { duration: 3000, verticalPosition: 'top' });
+      this.getBillList();
+    }, (error) => {
+      console.error(error);
+      this._snackBar.open('Error paying bill.', 'Error', { duration: 3000, verticalPosition: 'top' });
     });
   }
 
