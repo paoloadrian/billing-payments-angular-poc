@@ -1,7 +1,7 @@
 export interface Bill {
     id: number,
-    month: string,
+    period: string,
     dueDate?: Date,
-    type: string,
+    category: string,
     status: boolean
 }

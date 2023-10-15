@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BillsComponent implements OnInit {
   client: Client = { id: 0, name: ''};
-  displayedColumns: string[] = ['dueDate', 'type', 'status', 'action'];
+  displayedColumns: string[] = ['dueDate', 'category', 'status', 'action'];
   billList: Bill[] = [];
   readonly errorMessage: string = 'Error reading client\'s bills';
   showError: boolean = false;
@@ -30,8 +30,8 @@ export class BillsComponent implements OnInit {
   private getBillList(): void {
     this.billService.getBills(this.client.id).subscribe((response: Bill[]) => {
       this.billList = response.map((bill: Bill) => {
-        const month = bill.month.substring(4, 6);
-        const year = bill.month.substring(0, 4);
+        const month = bill.period.substring(4, 6);
+        const year = bill.period.substring(0, 4);
         bill.dueDate = new Date(Number(year), Number(month), 0);
         return bill;
       });
